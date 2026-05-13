@@ -19,11 +19,11 @@ import {
   manualImageUrl,
   navLinks,
   paperTextureUrl,
-  sections,
   steps,
   valueProps,
 } from "@/lib/content";
 import { Eyebrow, Field, GoldRule, PaperSurface, SectionHeading } from "./primitives";
+import CardDeck from "./card-deck";
 import CheckoutStep from "./checkout-step";
 
 type IntakeFormValues = {
@@ -282,53 +282,9 @@ function ValueSection() {
 
 function IncludedSection() {
   return (
-    <section id="included" className="section-pad bg-[rgba(234,228,214,0.45)]">
+    <section id="included" className="bg-[rgba(234,228,214,0.45)] py-28 lg:py-40">
       <div className="container">
-        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-          <SectionHeading
-            eyebrow="Table of Contents"
-            title="What's included in the manual."
-            italic="included"
-          />
-          <p className="max-w-sm text-[11px] font-semibold uppercase leading-6 tracking-[0.2em] text-[var(--muted-fg)]">
-            Seven sections · 184 individual policies · fully indexed and
-            cross-referenced
-          </p>
-        </div>
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {sections.map((section) => (
-            <PaperSurface
-              key={section.label}
-              className="p-7 transition hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(42,58,94,0.18)]"
-            >
-              <div className="flex items-start justify-between gap-5">
-                <p className="display text-5xl text-[var(--gold)]">
-                  {section.label}
-                </p>
-                <p className="pt-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[var(--muted-fg)]">
-                  Section
-                </p>
-              </div>
-              <h3 className="display mt-7 text-3xl text-[var(--navy)]">
-                {section.title}
-              </h3>
-              <div className="my-5">
-                <GoldRule />
-              </div>
-              <ul className="space-y-3">
-                {section.items.map((item) => (
-                  <li
-                    key={item}
-                    className="flex gap-3 text-sm leading-6 text-[var(--ink-soft)]"
-                  >
-                    <span className="mt-3 h-px w-3 shrink-0 bg-[var(--gold)]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </PaperSurface>
-          ))}
-        </div>
+        <CardDeck />
       </div>
     </section>
   );
